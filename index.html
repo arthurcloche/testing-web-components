@@ -24,5 +24,47 @@
     <child-component bg-color="green"></child-component>
     <child-component bg-color="blue"></child-component>
   </parent-component>
+  <div style="height:40px"></div>
+  <template id="user-card-template">
+    <style>
+      :host {
+        display: block;
+        font-family: 'Arial', sans-serif;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 200px;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+      }
+      .avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      .info {
+        flex-grow: 1;
+      }
+    </style>
+    <div class="container">
+      <img class="avatar">
+      <div class="info">
+        <strong><slot name="name"></slot></strong>
+        <div><slot name="email"></slot></div>
+      </div>
+    </div>
+  </template>
+
+  <user-card avatar="https://picsum.photos/seed/picsum/200/200">
+    <span slot="name">John Doe</span>
+    <span slot="email">john@example.com</span>
+  </user-card>
+  
+  <user-card avatar="https://picsum.photos/seed/hello/200/200">
+    <span slot="name">John Doe</span>
+    <span slot="email">john@example.com</span>
+  </user-card>
 </body>
 </html>
