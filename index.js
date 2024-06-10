@@ -144,3 +144,56 @@ class P5 extends HTMLElement {
 }
 
 customElements.define("my-p5", P5);
+
+class ChildComponent extends HTMLElement {
+	constructor() {
+		super();
+		this.attachShadow({ mode: "open" });
+
+		const style = document.createElement("style");
+		style.textContent = `
+        div {
+          width: 100px;
+          height: 100px;
+          background-color: var(--bg-color, gray);
+        }
+      `;
+		this.shadowRoot.appendChild(style);
+
+		const div = document.createElement("div");
+		this.shadowRoot.appendChild(div);
+	}
+
+	static get observedAttributes() {
+		return ["bg-color"];
+	}
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (name === "bg-color") {
+			this.style.setProperty("--bg-color", newValue);
+		}
+	}
+}
+
+customElements.define("child-component", ChildComponent);
+
+class ParentComponent extends HTMLElement {
+	constructor() {
+		super();
+		this.attachShadow({ mode: "open" });
+
+		const slot = document.createElement("slot");
+		this.shadowRoot.appendChild(slot);
+	}
+
+	connectedCallback() {
+		const children = this.querySelectorAll("child-component");
+		children.forEach((child, index) => {
+			// Example: Set a different background color for each child
+			const colors = ["red", "green", "blue"];
+			child.setAttribute("bg-color", colors[index % colors.length]);
+		});
+	}
+}
+
+customElements.define("parent-component", ParentComponent);
