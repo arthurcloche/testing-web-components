@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Components</title>
+</head>
+<body>
+    <script src="index.js"></script>
+    <my-p5-sketch></my-p5-sketch>
+    <my-p5-sketch bg-color="red"></my-p5-sketch>
+    <my-p5-sketch bg-color="green" width="400" height="200"></my-p5-sketch>
+    <my-p5-sketch bg-color="blue" width="200" height="400"></my-p5-sketch>
+    <my-p5
+    bg-color="purple"
+    width="300"
+    height="300"
+    setup="function(p) { p.createCanvas(p.width, p.height); p.background(this.bgColor || 200); }"
+    draw="function(p) { p.ellipse(p.width / 2, p.height / 2, 50, 50); }"
+  ></my-p5>
+</body>
+</html>
