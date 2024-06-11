@@ -1,0 +1,16 @@
+{
+	"name": "testing-web-components",
+	"version": "1.0.0",
+	"description": "Testing Web Components with HTMX",
+	"main": "server.js",
+	"scripts": {
+		"start": "nodemon server.js"
+	},
+	"keywords": [],
+	"author": "arthurcloche",
+	"license": "MIT",
+	"dependencies": {
+		"express": "^4.19.2",
+		"nodemon": "^3.1.3"
+	}
+}

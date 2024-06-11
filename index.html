@@ -3,26 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Components</title>
+    <title>HTMX and Web Components Example</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/htmx.org"></script>
+    <script src="component.js" defer></script>
 </head>
 <body>
-    <script src="index.js"></script>
-    <my-p5-sketch></my-p5-sketch>
-    <my-p5-sketch bg-color="red"></my-p5-sketch>
-    <my-p5-sketch bg-color="green" width="400" height="200"></my-p5-sketch>
-    <my-p5-sketch bg-color="blue" width="200" height="400"></my-p5-sketch>
-    <my-p5
-    bg-color="purple"
-    width="300"
-    height="300"
-    setup="function(p) { p.createCanvas(p.width, p.height); p.background(this.bgColor || 200); }"
-    draw="function(p) { p.ellipse(p.width / 2, p.height / 2, 50, 50); }"
-  ></my-p5>
-  <div style="height:40px"></div>
-  <parent-component>
-    <child-component bg-color="red"></child-component>
-    <child-component bg-color="green"></child-component>
-    <child-component bg-color="blue"></child-component>
-  </parent-component>
+    <h1>HTMX and Web Components Example</h1>
+    
+    <my-component></my-component>
+    
+    <button hx-get="/api/data" hx-target="#data" hx-swap="outerHTML">Load Data</button>
+    <div id="data"></div>
 </body>
 </html>
